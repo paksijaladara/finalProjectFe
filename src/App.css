@@ -1,0 +1,319 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.Searchbar {
+  height: 34px;
+  width: 256px;
+  margin: 3px 0 0 0;
+  padding: 0 0 0 50px;
+  max-height: 34px;
+  min-height: 30px;
+  max-width: 100%;
+  font-family: Prompt;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  word-spacing: 0px;
+  float: left;
+  display: block;
+  position: absolute;
+  top: 35px;
+  bottom: 13px;
+  right: 81px;
+  left: 25px;
+}
+.Logo {
+  font-family: Prompt;
+  font-size: 35px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 15.4px;
+  text-decoration: none solid rgb(51, 55, 69);
+  text-align: center;
+  word-spacing: 0px;
+  position: absolute;
+  top: 45px;
+  bottom: 13px;
+  right: 40%;
+  left: 40%;
+}
+.cart {
+  position: absolute;
+  top: 35px;
+  bottom: 13px;
+  right: 5%;
+  font-size: 25px;
+  color: #bbded6;
+  /* left: 40%; */
+}
+
+.header-atas-kontent {
+  margin: auto 0;
+  width: 100%;
+}
+.header-bawah {
+  background-color: #bbded6;
+}
+
+.gambar {
+  margin: auto;
+  height: 350px;
+  width: 700px;
+  display: block;
+}
+.kotak1 {
+  background-color: #bbded6;
+  display: flex;
+  height: 280px;
+}
+.kotak2 {
+  background-color: white;
+  display: flex;
+  height: 280px;
+}
+.kotakbesar {
+  background: url("https://theaquaticgazette.files.wordpress.com/2011/05/dsc07012.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.cardTawar {
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+  margin: 50px auto;
+}
+.cardLaut {
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+  margin: 50px auto;
+}
+p.card-text span:hover {
+  cursor: pointer;
+}
+p.card-text {
+  text-align: left;
+}
+
+/* mulai login */
+.Login {
+  height: 75vh;
+}
+.login-container {
+  margin: 40px 0;
+}
+.Register {
+  height: 90vh;
+}
+.Register-container {
+  margin: 40px 0;
+}
+
+.form-elegant .font-small {
+  font-size: 0.8rem;
+}
+
+.nav-home {
+  color: black !important;
+}
+.nav-home:hover {
+  color: #999 !important;
+}
+.nav-homeItem {
+  color: black !important;
+  margin-top: -5px !important;
+}
+.nav-homeItem:hover {
+  color: #999 !important;
+}
+
+.form-elegant .z-depth-1a {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26),
+    0 4px 12px 0 rgba(121, 155, 254, 0.25);
+  box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26),
+    0 4px 12px 0 rgba(121, 155, 254, 0.25);
+}
+
+.form-elegant .z-depth-1-half,
+.form-elegant .btn:hover {
+  -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28),
+    0 4px 15px 0 rgba(36, 133, 255, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28),
+    0 4px 15px 0 rgba(36, 133, 255, 0.15);
+}
+/* selesai Login */
+/* mulai footer */
+.site-footer {
+  background-color: #bbded6;
+  padding: 45px 0 20px;
+  font-size: 15px;
+  line-height: 24px;
+  color: #737373;
+}
+.site-footer hr {
+  border-top-color: #bbb;
+  opacity: 0.5;
+}
+.site-footer hr.small {
+  margin: 20px 0;
+}
+.site-footer h6 {
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  letter-spacing: 2px;
+}
+.site-footer a {
+  color: #737373;
+}
+.site-footer a:hover {
+  color: #3366cc;
+  text-decoration: none;
+}
+.footer-links {
+  padding-left: 0;
+  list-style: none;
+}
+.footer-links li {
+  display: block;
+}
+.footer-links a {
+  color: #737373;
+}
+.footer-links a:active,
+.footer-links a:focus,
+.footer-links a:hover {
+  color: #3366cc;
+  text-decoration: none;
+}
+.footer-links.inline li {
+  display: inline-block;
+}
+.site-footer .social-icons {
+  text-align: right;
+}
+.site-footer .social-icons a {
+  width: 40px;
+  height: 40px;
+  line-height: 35px;
+  margin-left: 6px;
+  margin-right: 0;
+  border-radius: 100%;
+  background-color: #33353d;
+}
+.copyright-text {
+  margin: 0;
+}
+@media (max-width: 991px) {
+  .site-footer [class^="col-"] {
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 767px) {
+  .site-footer {
+    padding-bottom: 0;
+  }
+  .site-footer .copyright-text,
+  .site-footer .social-icons {
+    text-align: center;
+  }
+}
+.social-icons {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.social-icons li {
+  display: inline-block;
+  margin-bottom: 3px;
+}
+.social-icons li.title {
+  margin-right: 15px;
+  text-transform: uppercase;
+  color: #96a2b2;
+  font-weight: 700;
+  font-size: 13px;
+}
+.social-icons a {
+  background-color: #eceeef;
+  color: #818a91;
+  font-size: 1rem;
+  display: inline-block;
+  line-height: 44px;
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  margin-right: 8px;
+  border-radius: 100%;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.social-icons a:active,
+.social-icons a:focus,
+.social-icons a:hover {
+  color: #fff;
+  background-color: #29aafe;
+}
+.social-icons.size-sm a {
+  line-height: 34px;
+  height: 34px;
+  width: 34px;
+  font-size: 14px;
+}
+.social-icons a.facebook:hover {
+  background-color: #3b5998;
+}
+.social-icons a.twitter:hover {
+  background-color: #00aced;
+}
+.social-icons a.instagram:hover {
+  background-color: #ea4c89;
+}
+@media (max-width: 767px) {
+  .social-icons li.title {
+    display: block;
+    margin-right: 0;
+    font-weight: 600;
+  }
+}
+/* Footer selesai */
