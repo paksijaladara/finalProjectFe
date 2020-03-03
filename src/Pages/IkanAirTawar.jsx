@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import { API } from "../API";
+import { API, APIIMAGE } from "../API";
 // import { Button } from "reactstrap";
 
 class IkanAirTawar extends Component {
   // komponen did mount
   componentDidMount() {
-    Axios.get(`${API}/data_product/get-data`)
+    Axios.get(`${API}/home_product/get-data?kategoriId=1`)
       .then(res => {
         this.setState({ data: res.data });
       })
@@ -26,7 +26,7 @@ class IkanAirTawar extends Component {
         return (
           <div className="card" style={{ width: "18rem" }} key={index}>
             <img
-              src="https://moondoggiesmusic.com/wp-content/uploads/2019/02/Ikan-Hias-Tropis-yang-Suka-Bersembunyi-%E2%80%93-Ikan-Discus.jpg"
+              src={APIIMAGE + val.colomImage}
               className="card-img-top"
               alt="ikan"
             />
@@ -58,7 +58,7 @@ class IkanAirTawar extends Component {
                   </span>
                 </p>
               )}
-              <a href="/" className="btn btn-primary">
+              <a href={`/ProductDetail/${val.id}`} className="btn btn-primary">
                 Detail
               </a>
             </div>

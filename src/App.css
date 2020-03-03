@@ -126,16 +126,29 @@
   grid-row-gap: 50px;
   margin: 50px auto;
 }
+.cardHome {
+  display: flex;
+  grid-template-columns: repeat(3, 300px);
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+  margin: 50px auto;
+}
+.card-img-top {
+  height: 210px;
+}
 p.card-text span:hover {
   cursor: pointer;
 }
 p.card-text {
   text-align: left;
 }
+.detailProduct {
+  text-align: left;
+}
 
-/* mulai login */
+/* mulai login register */
 .Login {
-  height: 75vh;
+  height: 80vh;
 }
 .login-container {
   margin: 40px 0;
@@ -147,39 +160,7 @@ p.card-text {
   margin: 40px 0;
 }
 
-.form-elegant .font-small {
-  font-size: 0.8rem;
-}
-
-.nav-home {
-  color: black !important;
-}
-.nav-home:hover {
-  color: #999 !important;
-}
-.nav-homeItem {
-  color: black !important;
-  margin-top: -5px !important;
-}
-.nav-homeItem:hover {
-  color: #999 !important;
-}
-
-.form-elegant .z-depth-1a {
-  -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26),
-    0 4px 12px 0 rgba(121, 155, 254, 0.25);
-  box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26),
-    0 4px 12px 0 rgba(121, 155, 254, 0.25);
-}
-
-.form-elegant .z-depth-1-half,
-.form-elegant .btn:hover {
-  -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28),
-    0 4px 15px 0 rgba(36, 133, 255, 0.15);
-  box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28),
-    0 4px 15px 0 rgba(36, 133, 255, 0.15);
-}
-/* selesai Login */
+/* selesai Login register */
 /* mulai footer */
 .site-footer {
   background-color: #bbded6;
@@ -197,7 +178,7 @@ p.card-text {
 }
 .site-footer h6 {
   color: #fff;
-  font-size: 16px;
+  font-size: 20px;
   text-transform: uppercase;
   margin-top: 5px;
   letter-spacing: 2px;
@@ -241,14 +222,14 @@ p.card-text {
   background-color: #33353d;
 }
 .copyright-text {
-  margin: 0;
+  text-align: center;
 }
 @media (max-width: 991px) {
   .site-footer [class^="col-"] {
     margin-bottom: 30px;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 700px) {
   .site-footer {
     padding-bottom: 0;
   }
@@ -317,3 +298,99 @@ p.card-text {
   }
 }
 /* Footer selesai */
+/* not found mulai */
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#notfound {
+  position: relative;
+  height: 100vh;
+}
+
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.notfound {
+  max-width: 410px;
+  width: 100%;
+  text-align: center;
+}
+
+.notfound .notfound-404 {
+  height: 280px;
+  position: relative;
+  z-index: -1;
+}
+
+.notfound .notfound-404 h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 230px;
+  margin: 0px;
+  font-weight: 900;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background: url("./img/bg.jpg") no-repeat;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: cover;
+  background-position: center;
+}
+
+.notfound h2 {
+  font-family: "Montserrat", sans-serif;
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+.notfound p {
+  font-family: "Montserrat", sans-serif;
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+.notfound a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: #0046d5;
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 40px;
+  color: #fff;
+  font-weight: 700;
+  -webkit-box-shadow: 0px 4px 15px -5px #0046d5;
+  box-shadow: 0px 4px 15px -5px #0046d5;
+}
+
+@media only screen and (max-width: 767px) {
+  .notfound .notfound-404 {
+    height: 142px;
+  }
+  .notfound .notfound-404 h1 {
+    font-size: 112px;
+  }
+}
+/* not found end */

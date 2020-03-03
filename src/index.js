@@ -3,16 +3,25 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import Reducers from "./redux/reducers";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "mdbreact/dist/css/mdb.css";
+import "react-web-tabs/dist/react-web-tabs.css";
 
+const store = createStore(Reducers, {}, applyMiddleware(thunk));
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
+
   document.getElementById("root")
 );
 

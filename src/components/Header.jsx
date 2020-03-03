@@ -14,6 +14,9 @@ import {
   // NavbarText
 } from "reactstrap";
 import { FaCaretDown, FaCartArrowDown } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../redux/actions";
+// import { Redirect } from "react-router-dom";
 
 const Header = props => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +24,14 @@ const Header = props => {
   const [dropdownOpen2, setDropdownOpen2] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const login = useSelector(state => state.LoginRegister.loginstatus);
+  const dispatch = useDispatch();
+
+  const btnLogout = () => {
+    localStorage.removeItem("id");
+    dispatch(logOut());
+  };
 
   return (
     <div>
@@ -32,7 +43,11 @@ const Header = props => {
               placeholder="Search"
               style={{ width: "300px" }}
             ></input>
-            <div className="Logo">AQUA DAVIDA</div>
+
+            <div className="Logo" a href="/">
+              AQUA DAVIDA
+            </div>
+
             <div className="cart">
               <FaCartArrowDown />
             </div>
@@ -45,7 +60,7 @@ const Header = props => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mx-auto" navbar>
             <NavItem className="mt-2 mx-4  d-flex">
-              <NavLink className="nav-home" to="/">
+              <NavLink className="nav-home" href="/">
                 Home
               </NavLink>
             </NavItem>
@@ -85,15 +100,21 @@ const Header = props => {
                 </a>
               </DropdownToggle>
               <DropdownMenu right className="nav-homeItem">
-                <DropdownItem>Aquarium</DropdownItem>
+                <DropdownItem href="/aquarium">Aquarium</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>Utilities</DropdownItem>
+                <DropdownItem href="/utilities">Utilities</DropdownItem>
               </DropdownMenu>
             </Dropdown>
             <NavItem className="mt-2 mx-4  d-flex">
-              <NavLink className="nav-home" to="/login">
-                Login
-              </NavLink>
+              {login === true ? (
+                <NavLink className="nav-home" href="/login" onClick={btnLogout}>
+                  Logout
+                </NavLink>
+              ) : (
+                <NavLink className="nav-home" href="/login">
+                  Login
+                </NavLink>
+              )}
             </NavItem>
           </Nav>
         </Collapse>

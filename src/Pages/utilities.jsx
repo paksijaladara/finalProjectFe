@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import Axios from "axios";
 import { API, APIIMAGE } from "../API";
 
-class IkanLaut extends Component {
+class Utilities extends Component {
   // conponent did mount
   componentDidMount() {
-    Axios.get(`${API}/home_product/get-data?kategoriId=2`)
+    Axios.get(`${API}/home_product/get-data?kategoriId=4`)
       .then(res => {
         this.setState({ data: res.data });
       })
@@ -21,13 +21,13 @@ class IkanLaut extends Component {
   // function render data
   renderData = () => {
     return this.state.data.map((val, index) => {
-      if (val.kategoriId === 2) {
+      if (val.kategoriId === 4) {
         return (
           <div className="card" style={{ width: "18rem" }} key={index}>
             <img
               src={APIIMAGE + val.colomImage}
               className="card-img-top"
-              alt="ikan"
+              alt="utilities"
             />
             <div className="card-body">
               <h3 className="card-title">{val.nama}</h3>
@@ -78,4 +78,4 @@ class IkanLaut extends Component {
   }
 }
 
-export default IkanLaut;
+export default Utilities;

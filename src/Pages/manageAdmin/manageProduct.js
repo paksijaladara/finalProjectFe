@@ -105,25 +105,6 @@ function ManageProduct() {
   // FUNCTION ADD Product
   const addProduct = () => {
     var formdata = new FormData();
-
-    // const {
-    //   nama,
-    //   harga,
-    //   deskripsiAwal,
-    //   kategoriId,
-    //   stock,
-    //   deskripsiFull,
-    //   newArrival
-    // } = addData;
-    // const data = {
-    //   nama: nama.current.value,
-    //   harga: harga.current.value,
-    //   deskripsiAwal: deskripsiAwal.current.value,
-    //   kategoriId: kategoriId.current.value,
-    //   stock: stock.current.value,
-    //   deskripsiFull: deskripsiFull.current.value,
-    //   newArrival: newArrival.current.value
-    // };
     var Headers = {
       // Headers adalah config axios, untuk memberi tahu ada file yang ingin di upload melalui 'Content-Type':'multipart/form-data'
       headers: {
@@ -134,11 +115,14 @@ function ManageProduct() {
     formdata.append("image", addImage.addImageFile);
     formdata.append("data", JSON.stringify(addData));
 
+    console.log("formdata", formdata);
+
     Axios.post(`${API}/data_product/addProduct`, formdata, Headers)
       .then(res => {
         setDataProduct(res.data.dataProduct);
         console.log(res);
-        // setModalAdd(!modalAdd);
+        setAddData({});
+        setModalAdd(!modalAdd);
       })
       .catch(err => {
         console.log(err);
@@ -161,8 +145,8 @@ function ManageProduct() {
     }
   };
 
-  // FUNCTION EDIT USER
-  const editUser = () => {
+  // FUNCTION EDIT product
+  const editProduct = () => {
     var formdata = new FormData();
 
     const data = {
@@ -199,7 +183,7 @@ function ManageProduct() {
       });
   };
 
-  // FUNCTION DELETE USER
+  // FUNCTION DELETE Product
   const deleteUser = () => {
     Axios.delete(`${API}/data_product/product/${dataProductDelete.id}`)
       .then(res => {
@@ -212,7 +196,7 @@ function ManageProduct() {
   };
 
   // MENAMPILKAN DAFTAR USER
-  const renderUser = () => {
+  const renderProduct = () => {
     return dataProduct.map((val, i) => {
       return (
         <tr key={i}>
@@ -255,7 +239,7 @@ function ManageProduct() {
   // if (dataProduct.length === 0) {
   //   return <div> Loading... </div>;
   // }
-
+  console.log(dataProductEdit);
   return (
     <div className="App">
       {/* modal add */}
@@ -331,16 +315,15 @@ function ManageProduct() {
         title="Edit User"
         toggle={toggleModalEdit}
         modal={modalEdit}
-        actionFunc={editUser}
+        actionFunc={editProduct}
       >
         <Input
           className="mb-3"
           type="text"
           placeholder="input nama"
-          // defaultValue={dataProductEdit.nama}
-          value={dataProductEdit.nama}
+          defaultValue={dataProductEdit.nama}
           onChange={e =>
-            setDataProductEdit({ ...dataProductEdit, userName: e.target.value })
+            setDataProductEdit({ ...dataProductEdit, nama: e.target.value })
           }
         />
         <Input
@@ -447,7 +430,7 @@ function ManageProduct() {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>{renderUser()}</tbody>
+        <tbody>{renderProduct()}</tbody>
       </Table>
     </div>
   );
