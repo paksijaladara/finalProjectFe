@@ -36,7 +36,7 @@ class cardHome extends Component {
           />
           <div className="card-body">
             <h3 className="card-title">{val.nama}</h3>
-            {this.state.readmoreselected === index ? (
+            {/* {this.state.readmoreselected === index ? (
               <p className="card-text">
                 {val.deskripsiAwal}
                 <br />
@@ -60,8 +60,8 @@ class cardHome extends Component {
                 >
                   Read More
                 </span>
-              </p>
-            )}
+              </p>  
+            )} */}
             <Link to={`/ProductDetail/${val.id}`} className="btn btn-primary">
               Detail
             </Link>
@@ -77,8 +77,15 @@ class cardHome extends Component {
   render() {
     return (
       <>
-        <div style={{ display: "flex" }}>
-          <span>Our product</span>
+        <div>
+          <div className="container" style={{ textAlign: "center" }}>
+            <h1
+              className="container"
+              style={{ display: "flex", textAlign: "center" }}
+            >
+              Our product
+            </h1>
+          </div>
           <div className="cardHome">{this.renderData()}</div>
         </div>
       </>

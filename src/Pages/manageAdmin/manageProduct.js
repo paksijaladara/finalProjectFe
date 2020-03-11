@@ -158,7 +158,7 @@ function ManageProduct() {
       newArrival: dataProductEdit.newArrival,
       kategoriId: dataProductEdit.editKategoriId
     };
-    data.kategoriId = dataProductEdit.editkategoriId;
+    // data.kategoriId = dataProductEdit.editkategoriId;
 
     var Headers = {
       headers: {

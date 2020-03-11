@@ -23,15 +23,17 @@ class IkanLaut extends Component {
     return this.state.data.map((val, index) => {
       if (val.kategoriId === 2) {
         return (
-          <div className="card" style={{ width: "18rem" }} key={index}>
+          <div className="card" style={{ width: "21rem" }} key={index}>
             <img
               src={APIIMAGE + val.colomImage}
               className="card-img-top"
               alt="ikan"
             />
             <div className="card-body">
-              <h3 className="card-title">{val.nama}</h3>
-              {this.state.readmoreselected === index ? (
+              <h3 className="card-title" style={{ height: "40px" }}>
+                {val.nama}
+              </h3>
+              {/* {this.state.readmoreselected === index ? (
                 <p className="card-text">
                   {val.deskripsiAwal}
                   <br />
@@ -56,8 +58,13 @@ class IkanLaut extends Component {
                     Read More
                   </span>
                 </p>
-              )}
-              <a href={`/ProductDetail/${val.id}`} className="btn btn-primary">
+              )} */}
+            </div>
+            <div>
+              <a
+                href={`/ProductDetail/${val.id}`}
+                className="btn btn-outline-primary btn-sm"
+              >
                 Detail
               </a>
             </div>

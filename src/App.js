@@ -10,15 +10,46 @@ import Login from "./Pages/login";
 import Register from "./Pages/register";
 import ManageUser from "./Pages/manageAdmin/manageProduct";
 import ProductDetail from "./Pages/productDetail";
-import ManageAdmin from "./Pages/manageAdmin";
+import ManageAdmin from "./Pages/manageAdmin/manageAdmin";
 import BuyProduct from "./Pages/buyProduct";
 import Notfound from "./Pages/notFound";
 import Aquarium from "./Pages/aquarium";
 import Utilities from "./Pages/utilities";
-// import Axios from "axios";
+import Axios from "axios";
+import { API } from "./API";
+import { connect } from "react-redux";
+import { getChart, reLogin } from "./redux/actions";
+import Cart from "./Pages/cart";
 
 class App extends Component {
+  state = { loading: true };
+
+  componentDidMount() {
+    var id = localStorage.getItem("id");
+
+    if (id) {
+      Axios.get(`${API}/LoginRegister/login/${id}`)
+        .then(res => {
+          console.log("res", res);
+
+          this.props.reLogin(res.data.result);
+          console.log("masuk");
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+    this.setState({ loading: false });
+  }
+
+  // componentDidMount() {
+  //   this.props.getChart();
+  // }
+
   render() {
+    // if (this.state.loading) {
+    //   return <div>Loading... </div>;
+    // }
     return (
       <Router>
         <div className="App">
@@ -39,7 +70,11 @@ class App extends Component {
             <Route path={"/notfound"} component={Notfound} exact />
             <Route path={"/aquarium"} component={Aquarium} exact />
             <Route path={"/utilities"} component={Utilities} exact />
-            <Route path="/ProductDetail/:productId" component={ProductDetail} />
+            <Route path={"/cart"} component={Cart} exact />
+            <Route
+              path={"/ProductDetail/:productId"}
+              component={ProductDetail}
+            />
           </Switch>
         </div>
       </Router>
@@ -47,4 +82,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    userName: state.LoginRegister.userName,
+    loading: state.LoginRegister.loading,
+    error: state.LoginRegister.error,
+    loginStatus: state.LoginRegister.loginStatus
+  };
+};
+
+export default connect(mapStateToProps, { getChart, reLogin })(App);

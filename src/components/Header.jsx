@@ -25,7 +25,10 @@ const Header = props => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const login = useSelector(state => state.LoginRegister.loginstatus);
+  const userName = useSelector(state => state.LoginRegister.userName); //memnggil reducers username dari redux
+  const login = useSelector(state => state.LoginRegister.loginstatus); //memanggil reducers sekaligus statenya
+  const { dataCart } = useSelector(state => state.TransaksiReducers); //manggil reducers dengan cara destructuring
+
   const dispatch = useDispatch();
 
   const btnLogout = () => {
@@ -50,6 +53,7 @@ const Header = props => {
 
             <div className="cart">
               <FaCartArrowDown />
+              {dataCart.length}
             </div>
           </div>
         </div>
@@ -58,6 +62,8 @@ const Header = props => {
       <Navbar className="header-bawah mx-auto" light expand="md">
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
+          {login === true ? <NavLink>Hello, {userName}</NavLink> : null}
+
           <Nav className="mx-auto" navbar>
             <NavItem className="mt-2 mx-4  d-flex">
               <NavLink className="nav-home" href="/">

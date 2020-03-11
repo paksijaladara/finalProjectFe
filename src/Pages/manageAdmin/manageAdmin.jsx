@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { render } from 'react-dom';
 import { Tabs, Tab, TabPanel, TabList } from "react-web-tabs";
-import ManageProduct from "./manageAdmin/manageProduct";
+import ManageProduct from "./manageProduct";
 // import { Redirect } from "react-router-dom";
 
 class ManageAdmin extends Component {

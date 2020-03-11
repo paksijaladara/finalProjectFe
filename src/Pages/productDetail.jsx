@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import Axios from "axios";
 import { API } from "../API/index";
 import { Redirect } from "react-router-dom";
-// import { Modal, ModalBody, ModalFooter } from "reactstrap";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
+import { addCart } from "../redux/actions";
 // import { useParams } from "react-router-dom";
+// import { Modal, ModalBody, ModalFooter } from "reactstrap";
 
 class ProductDetail extends Component {
   state = {
@@ -27,11 +28,8 @@ class ProductDetail extends Component {
   }
 
   btnBeliProduct = () => {
-    if (this.props.loginstatus) {
-      this.setState({ beli: true });
-    } else {
-      this.setState({ belumlogin: true });
-    }
+    this.props.addCart(this.state.detailProduct);
+    // console.log("ok");
   };
 
   render() {
@@ -95,7 +93,12 @@ class ProductDetail extends Component {
             </tbody>
           </table>
           <div>
-            <button className="mr-1 btn btn-primary">Buy Product</button>
+            <button
+              className="mr-1 btn btn-primary"
+              onClick={this.btnBeliProduct}
+            >
+              Buy Product
+            </button>
           </div>
         </div>
       </div>
@@ -103,4 +106,12 @@ class ProductDetail extends Component {
   }
 }
 
-export default ProductDetail;
+const mapStateToProps = state => {
+  return {
+    error: state.LoginRegister.error,
+    userName: state.LoginRegister.userName,
+    loginstatus: state.LoginRegister.loginstatus
+  };
+};
+
+export default connect(mapStateToProps, { addCart })(ProductDetail);
