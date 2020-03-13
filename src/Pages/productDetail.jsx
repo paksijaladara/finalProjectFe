@@ -27,8 +27,17 @@ class ProductDetail extends Component {
       });
   }
 
+  // Function Untuk Quantity Product Yang Ingin Di Beli Customer
+  handleInputProduct = e => {
+    const { name, value } = e.target;
+    this.setState({ ...this.state.detailProduct, [name]: value });
+    console.log(this.state.detailProduct);
+  };
+
   btnBeliProduct = () => {
-    this.props.addCart(this.state.detailProduct);
+    // this.props.addCart(this.state.detailProduct);
+    console.log(this.state.detailProduct);
+
     // console.log("ok");
   };
 
@@ -88,6 +97,19 @@ class ProductDetail extends Component {
                 <th scope="row">Kategori </th>
                 <td className="detailProduct">
                   {this.state.detailProduct.kategori}
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Quantity</th>
+                <td className="detailProduct">
+                  <input
+                    type="number"
+                    min={0}
+                    name="quantity_product"
+                    max={this.state.detailProduct.stock}
+                    // defaultValue={0}
+                    onChange={this.handleInputProduct}
+                  />
                 </td>
               </tr>
             </tbody>

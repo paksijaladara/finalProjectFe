@@ -4,7 +4,9 @@ import {
   ADD_TRANSAKSI_LOADING,
   GET_CHART_ERROR,
   GET_CHART_LOADING,
-  GET_CHART_SUCCESS
+  GET_CHART_SUCCESS,
+  DELETE_CHART_ERROR,
+  DELETE_CHART_LOADING
 } from "../actions/types";
 
 const initialState = {
@@ -27,6 +29,12 @@ export default (state = initialState, action) => {
     case GET_CHART_LOADING:
       return { ...state, loading: true };
     case GET_CHART_ERROR:
+      return { ...state, error: true };
+    // case DELETE_CHART_SUCCESS:
+    //   return { ...state, dataCart: action.payload };
+    case DELETE_CHART_LOADING:
+      return { ...state, loading: true };
+    case DELETE_CHART_ERROR:
       return { ...state, error: true };
     default:
       return state;

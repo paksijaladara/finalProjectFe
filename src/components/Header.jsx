@@ -16,9 +16,10 @@ import {
 import { FaCaretDown, FaCartArrowDown } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../redux/actions";
+import { Link } from "react-router-dom";
 // import { Redirect } from "react-router-dom";
 
-const Header = props => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [dropdownOpen2, setDropdownOpen2] = useState(false);
@@ -52,8 +53,10 @@ const Header = props => {
             </div>
 
             <div className="cart">
-              <FaCartArrowDown />
-              {dataCart.length}
+              <Link to="/Cart">
+                <FaCartArrowDown />
+                {dataCart.length}
+              </Link>
             </div>
           </div>
         </div>
@@ -62,11 +65,19 @@ const Header = props => {
       <Navbar className="header-bawah mx-auto" light expand="md">
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          {login === true ? <NavLink>Hello, {userName}</NavLink> : null}
+          {login === true ? (
+            <NavLink style={{ fontFamily: "bold", fontSize: "20px" }}>
+              Hello, {userName}
+            </NavLink>
+          ) : null}
 
           <Nav className="mx-auto" navbar>
             <NavItem className="mt-2 mx-4  d-flex">
-              <NavLink className="nav-home" href="/">
+              <NavLink
+                className="nav-home"
+                href="/"
+                style={{ color: "black", fontSize: "16px" }}
+              >
                 Home
               </NavLink>
             </NavItem>
@@ -77,14 +88,21 @@ const Header = props => {
               toggle={() => setDropdownOpen(!dropdownOpen)}
             >
               <DropdownToggle nav className=" mx-4  d-flex">
-                <a className="nav-link nav-home">
+                <a
+                  className="nav-link nav-home"
+                  style={{ fontFamily: "bold", fontSize: "17px" }}
+                >
                   <span>
                     Fish Collections
                     <FaCaretDown />
                   </span>
                 </a>
               </DropdownToggle>
-              <DropdownMenu right className="nav-homeItem">
+              <DropdownMenu
+                right
+                className="nav-homeItem"
+                style={{ fontFamily: "bold", fontSize: "17px" }}
+              >
                 <DropdownItem href="/ikanAirTawar">Ikan Air Tawar</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem href="/ikanAirLaut">Ikan Laut</DropdownItem>
@@ -98,20 +116,24 @@ const Header = props => {
               toggle={() => setDropdownOpen2(!dropdownOpen2)}
             >
               <DropdownToggle nav className=" mx-auto  d-flex">
-                <a className="nav-link nav-home">
+                <a className="nav-link nav-home" style={{ fontFamily: "bold" }}>
                   Equipments
                   <span>
                     <FaCaretDown />
                   </span>
                 </a>
               </DropdownToggle>
-              <DropdownMenu right className="nav-homeItem">
+              <DropdownMenu
+                right
+                className="nav-homeItem"
+                style={{ fontFamily: "bold" }}
+              >
                 <DropdownItem href="/aquarium">Aquarium</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem href="/utilities">Utilities</DropdownItem>
               </DropdownMenu>
             </Dropdown>
-            <NavItem className="mt-2 mx-4  d-flex">
+            <NavItem className="mt-2 mx-4  d-flex" style={{ fontSize: "16px" }}>
               {login === true ? (
                 <NavLink className="nav-home" href="/login" onClick={btnLogout}>
                   Logout

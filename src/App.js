@@ -25,9 +25,11 @@ class App extends Component {
   state = { loading: true };
 
   componentDidMount() {
+    this.props.getChart();
     var id = localStorage.getItem("id");
 
     if (id) {
+      this.props.getChart();
       Axios.get(`${API}/LoginRegister/login/${id}`)
         .then(res => {
           console.log("res", res);
@@ -42,10 +44,6 @@ class App extends Component {
     this.setState({ loading: false });
   }
 
-  // componentDidMount() {
-  //   this.props.getChart();
-  // }
-
   render() {
     // if (this.state.loading) {
     //   return <div>Loading... </div>;
@@ -55,9 +53,6 @@ class App extends Component {
         <div className="App">
           <Header />
           <Switch>
-            <Route path={"/"} exact>
-              <Home />
-            </Route>
             <Route path={"/"} component={Home} exact />
             <Route path={"/ikanAirTawar"} component={IkanAirTawar} exact />
             <Route path={"/ikanAirLaut"} component={ikanAirLaut} exact />
@@ -87,7 +82,8 @@ const mapStateToProps = state => {
     userName: state.LoginRegister.userName,
     loading: state.LoginRegister.loading,
     error: state.LoginRegister.error,
-    loginStatus: state.LoginRegister.loginStatus
+    loginStatus: state.LoginRegister.loginStatus,
+    dataCart: state.TransaksiReducers.dataCart
   };
 };
 
