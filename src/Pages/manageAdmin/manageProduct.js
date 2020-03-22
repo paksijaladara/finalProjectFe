@@ -3,6 +3,7 @@ import Axios from "axios";
 import { Table, Input, Button } from "reactstrap";
 import { API, APIIMAGE } from "../../API";
 import Modal from "../../components/Modal";
+// import { Redirect } from "react-router-dom";
 
 function ManageProduct() {
   const [dataProduct, setDataProduct] = useState([]);
@@ -66,7 +67,6 @@ function ManageProduct() {
 
   //function add image
   const onAddImageFileChange = event => {
-    console.log(event.target.files[0]);
     var file = event.target.files[0];
     if (file) {
       setaddImage({
@@ -152,7 +152,6 @@ function ManageProduct() {
     const data = {
       nama: dataProductEdit.nama,
       harga: dataProductEdit.harga,
-      deskripsiAwal: dataProductEdit.deskripsiAwal,
       stock: dataProductEdit.stock,
       deskripsiFull: dataProductEdit.deskripsiFull,
       newArrival: dataProductEdit.newArrival,
@@ -203,7 +202,6 @@ function ManageProduct() {
           <th>{i + 1}</th>
           <td>{val.nama}</td>
           <td>{val.harga}</td>
-          <td>{val.deskripsiAwal}</td>
           <td>{val.stock}</td>
           <td>{val.deskripsiFull}</td>
           <td>{val.newArrival}</td>
@@ -236,10 +234,6 @@ function ManageProduct() {
     });
   };
 
-  // if (dataProduct.length === 0) {
-  //   return <div> Loading... </div>;
-  // }
-  console.log(dataProductEdit);
   return (
     <div className="App">
       {/* modal add */}
@@ -262,13 +256,6 @@ function ManageProduct() {
           type="text"
           placeholder="input harga"
           name="harga"
-          onChange={handleAddData}
-        />
-        <Input
-          className="mb-3"
-          type="text"
-          placeholder="input deskripsiAwal"
-          name="deskripsiAwal"
           onChange={handleAddData}
         />
         <Input
@@ -335,18 +322,7 @@ function ManageProduct() {
             setDataProductEdit({ ...dataProductEdit, harga: e.target.value })
           }
         />
-        <Input
-          type="text"
-          placeholder="input deskripsi awal"
-          // defaultValue={dataProductEdit.deskripsiAwal}
-          value={dataProductEdit.deskripsiAwal}
-          onChange={e =>
-            setDataProductEdit({
-              ...dataProductEdit,
-              deskripsiAwal: e.target.value
-            })
-          }
-        />
+
         <Input
           type="number"
           placeholder="input kategoriId"
@@ -421,7 +397,6 @@ function ManageProduct() {
             <th>No</th>
             <th>Nama</th>
             <th>Harga</th>
-            <th>Deskripsi Awal</th>
             <th>Stock </th>
             <th>Deskripsi Full</th>
             <th>New Arrival</th>

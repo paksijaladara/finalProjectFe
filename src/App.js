@@ -20,6 +20,7 @@ import { API } from "./API";
 import { connect } from "react-redux";
 import { getChart, reLogin } from "./redux/actions";
 import Cart from "./Pages/cart";
+import Checkout from "./Pages/checkout";
 
 class App extends Component {
   state = { loading: true };
@@ -29,13 +30,13 @@ class App extends Component {
     var id = localStorage.getItem("id");
 
     if (id) {
-      this.props.getChart();
+      // this.props.getChart();
       Axios.get(`${API}/LoginRegister/login/${id}`)
         .then(res => {
           console.log("res", res);
 
           this.props.reLogin(res.data.result);
-          console.log("masuk");
+          console.log(res, "masuk");
         })
         .catch(err => {
           console.log(err);
@@ -45,9 +46,9 @@ class App extends Component {
   }
 
   render() {
-    // if (this.state.loading) {
-    //   return <div>Loading... </div>;
-    // }
+    if (this.state.loading) {
+      return <div>Loading... </div>;
+    }
     return (
       <Router>
         <div className="App">
@@ -62,10 +63,10 @@ class App extends Component {
             <Route path={"/manageAdmin"} component={ManageAdmin} exact />
             <Route path={"/buyProduct"} component={BuyProduct} exact />
             <Route path={"/notfound"} component={Notfound} exact />
-            <Route path={"/notfound"} component={Notfound} exact />
             <Route path={"/aquarium"} component={Aquarium} exact />
             <Route path={"/utilities"} component={Utilities} exact />
             <Route path={"/cart"} component={Cart} exact />
+            <Route path={"/checkout"} component={Checkout} exact />
             <Route
               path={"/ProductDetail/:productId"}
               component={ProductDetail}

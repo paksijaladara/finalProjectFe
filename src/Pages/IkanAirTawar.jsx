@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { API, APIIMAGE } from "../API";
+import { Link } from "react-router-dom";
 // import { Button } from "reactstrap";
 
 class IkanAirTawar extends Component {
@@ -34,40 +35,13 @@ class IkanAirTawar extends Component {
               <h3 className="card-title" style={{ height: "40px" }}>
                 {val.nama}
               </h3>
-              {/* {this.state.readmoreselected === index ? (
-                <p className="card-text">
-                  {val.deskripsiAwal}
-                  <br />
-                  <span
-                    style={{ color: "blue" }}
-                    onClick={() => this.setState({ readmoreselected: -1 })}
-                  >
-                    Read Less
-                  </span>
-                </p>
-              ) : (
-                <p className="card-text">
-                  {val.deskripsiAwal
-                    .split("")
-                    .filter((val, index) => index <= 100)}
-                  ...
-                  <br />
-                  <span
-                    style={{ color: "blue" }}
-                    onClick={() => this.setState({ readmoreselected: index })}
-                  >
-                    Read More
-                  </span>
-                </p>
-              )} */}
             </div>
             <div>
-              <a
-                href={`/ProductDetail/${val.id}`}
-                className="btn btn-outline-primary btn-sm"
-              >
-                Detail
-              </a>
+              <Link to={`/ProductDetail/${val.id}`}>
+                <button className="btn btn-outline-primary btn-sm">
+                  Detail
+                </button>
+              </Link>
             </div>
           </div>
         );

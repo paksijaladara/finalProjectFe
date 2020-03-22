@@ -17,16 +17,17 @@ import { FaCaretDown, FaCartArrowDown } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../redux/actions";
 import { Link } from "react-router-dom";
-// import { Redirect } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpen1, setDropdownOpen1] = useState(false);
   const [dropdownOpen2, setDropdownOpen2] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
   const userName = useSelector(state => state.LoginRegister.userName); //memnggil reducers username dari redux
+  const role = useSelector(state => state.LoginRegister.role); //memnggil reducers role dari redux
   const login = useSelector(state => state.LoginRegister.loginstatus); //memanggil reducers sekaligus statenya
   const { dataCart } = useSelector(state => state.TransaksiReducers); //manggil reducers dengan cara destructuring
 
@@ -64,15 +65,71 @@ const Header = () => {
 
       <Navbar className="header-bawah mx-auto" light expand="md">
         <NavbarToggler onClick={toggle} />
+
         <Collapse isOpen={isOpen} navbar>
-          {login === true ? (
-            <NavLink style={{ fontFamily: "bold", fontSize: "20px" }}>
-              Hello, {userName}
-            </NavLink>
+          {login && role === "user" ? (
+            <Dropdown
+              onMouseEnter={() => setDropdownOpen1(true)}
+              onMouseLeave={() => setDropdownOpen1(false)}
+              isOpen={dropdownOpen1}
+              toggle={() => setDropdownOpen1(!dropdownOpen)}
+              style={{ position: "absolute" }}
+            >
+              <DropdownToggle nav className="d-flex">
+                <a
+                  className="nav-link nav-home"
+                  style={{
+                    fontFamily: "bold",
+                    // fontSize: "17px",
+                    margin: "left"
+                  }}
+                >
+                  <span style={{ color: "black", textAlign: "left" }}>
+                    Hello, {userName} <FaCaretDown />
+                  </span>
+                </a>
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem href="/Checkout">Payment</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          ) : login && role === "admin" ? (
+            <Dropdown
+              onMouseEnter={() => setDropdownOpen1(true)}
+              onMouseLeave={() => setDropdownOpen1(false)}
+              isOpen={dropdownOpen1}
+              toggle={() => setDropdownOpen1(!dropdownOpen)}
+              style={{ position: "absolute" }}
+            >
+              <DropdownToggle nav className="d-flex">
+                <a
+                  className="nav-link nav-home"
+                  style={{
+                    fontFamily: "bold",
+                    // fontSize: "17px",
+                    margin: "left"
+                  }}
+                >
+                  <span style={{ color: "black", textAlign: "left" }}>
+                    Hello, {userName} <FaCaretDown />
+                  </span>
+                </a>
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem href="/manageAdmin">Manage Admin</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           ) : null}
 
-          <Nav className="mx-auto" navbar>
-            <NavItem className="mt-2 mx-4  d-flex">
+          <Nav
+            // className="mx-auto"
+            navbar
+            style={{
+              textAlign: "center",
+              margin: "auto"
+            }}
+          >
+            <NavItem className="mt-2 mx-auto  d-flex">
               <NavLink
                 className="nav-home"
                 href="/"
@@ -87,7 +144,7 @@ const Header = () => {
               isOpen={dropdownOpen}
               toggle={() => setDropdownOpen(!dropdownOpen)}
             >
-              <DropdownToggle nav className=" mx-4  d-flex">
+              <DropdownToggle nav className=" mx-auto  d-flex">
                 <a
                   className="nav-link nav-home"
                   style={{ fontFamily: "bold", fontSize: "17px" }}
@@ -133,7 +190,10 @@ const Header = () => {
                 <DropdownItem href="/utilities">Utilities</DropdownItem>
               </DropdownMenu>
             </Dropdown>
-            <NavItem className="mt-2 mx-4  d-flex" style={{ fontSize: "16px" }}>
+            <NavItem
+              className="mt-2 mx-auto  d-flex"
+              style={{ fontSize: "16px" }}
+            >
               {login === true ? (
                 <NavLink className="nav-home" href="/login" onClick={btnLogout}>
                   Logout

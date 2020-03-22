@@ -144,11 +144,32 @@
   grid-row-gap: 50px;
   margin: 50px auto;
 }
+.checkOut {
+  display: flex;
+  grid-auto-rows: auto;
+  margin-bottom: 15px;
+}
+.checkOutNama {
+  margin: auto;
+}
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+}
 .card-img-top {
   height: 250px;
+  transition: 700ms;
+}
+.card-img-top:hover {
+  transform: scale(1.1);
+  border-radius: 10px;
 }
 .img-cart {
   height: 150px;
+}
+.img-checkOut {
+  height: 150px;
+  width: 150px;
 }
 p.card-text span:hover {
   cursor: pointer;
@@ -175,6 +196,15 @@ p.card-text {
 }
 .container {
   text-align: center;
+}
+.productHome {
+  margin-top: 20px;
+  text-align: center;
+}
+.containerHome {
+  margin-top: 50px;
+  text-align: center;
+  font-family: initial;
 }
 
 /* selesai Login register */

@@ -12,14 +12,14 @@ import {
 const initialState = {
   loading: false,
   error: false,
-  addChart: false,
+  addCart: false,
   dataCart: []
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TRANSAKSI_SUCCESS:
-      return { ...state, addChart: true };
+      return { ...state, addCart: true, dataCart: action.payload };
     case ADD_TRANSAKSI_LOADING:
       return { ...state, loading: true };
     case ADD_TRANSAKSI_ERROR:

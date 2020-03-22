@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { API, APIIMAGE } from "../API";
+import { Link } from "react-router-dom";
 
 class Aquarium extends Component {
   // conponent did mount
@@ -31,35 +32,13 @@ class Aquarium extends Component {
             />
             <div className="card-body">
               <h3 className="card-title">{val.nama}</h3>
-              {this.state.readmoreselected === index ? (
-                <p className="card-text">
-                  {val.deskripsiAwal}
-                  <br />
-                  <span
-                    style={{ color: "blue" }}
-                    onClick={() => this.setState({ readmoreselected: -1 })}
-                  >
-                    Read Less
-                  </span>
-                </p>
-              ) : (
-                <p className="card-text">
-                  {val.deskripsiAwal
-                    .split("")
-                    .filter((val, index) => index <= 100)}
-                  ...
-                  <br />
-                  <span
-                    style={{ color: "blue" }}
-                    onClick={() => this.setState({ readmoreselected: index })}
-                  >
-                    Read More
-                  </span>
-                </p>
-              )}
-              <a href={`/ProductDetail/${val.id}`} className="btn btn-primary">
-                Detail
-              </a>
+            </div>
+            <div>
+              <Link to={`/ProductDetail/${val.id}`}>
+                <button className="btn btn-outline-primary btn-sm">
+                  Detail
+                </button>
+              </Link>
             </div>
           </div>
         );

@@ -12,14 +12,17 @@ import {
 import axios from "axios";
 import { API } from "../../API";
 
-export const addCart = data => {
+export const addCart = ({ id_product, quantity_product }) => {
   // get user id
   const id = localStorage.getItem("id");
-  console.log("addCart", data);
   return dispatch => {
     dispatch({ type: ADD_TRANSAKSI_LOADING });
     axios
-      .post(`${API}/transaksi/add-chart`, { data, userid: id })
+      .post(`${API}/transaksi/add-chart`, {
+        id_product,
+        quantity_product,
+        userid: id
+      })
       .then(res => {
         dispatch({ type: ADD_TRANSAKSI_SUCCESS, payload: res.data });
       })
@@ -29,7 +32,6 @@ export const addCart = data => {
 
 export const getChart = () => {
   const userid = localStorage.getItem("id");
-  console.log("getcart");
   return dispatch => {
     dispatch({ type: GET_CHART_LOADING });
     axios
@@ -42,13 +44,11 @@ export const getChart = () => {
   };
 };
 
-export const deleteCart = data => {
-  console.log(data);
-
+export const deleteCart = ({ id_detail }) => {
   return dispatch => {
     dispatch({ type: DELETE_CHART_LOADING });
     axios
-      .post(`${API}/transaksi/delete-cart/`, data)
+      .post(`${API}/transaksi/delete-cart/`, { id_detail })
       .then(res => {
         if (res.data.deleteStatus) {
           dispatch(getChart());

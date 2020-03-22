@@ -7,32 +7,35 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { connect } from "react-redux";
 import { getChart, deleteCart } from "../redux/actions";
 import { APIIMAGE } from "../API/index";
+import { Link } from "react-router-dom";
+// import { useSelector } from "react-redux";
 
 class Cart extends Component {
+  // state = {
+  //   cart: useSelector(state => state.TransaksiReducers.addCart)
+  // };
+
   componentDidMount() {
     this.props.getChart();
   }
 
-  // componentDidUpdate() {
-  //   this.props.getChart();
-  // }
-
   deleteCart(data) {
     this.props.deleteCart(data);
   }
+
+  checkOut = () => {};
 
   renderCart = () => {
     var datacart = this.props.dataCart;
     return datacart.map((val, index) => {
       console.log(val);
       let data = {
-        id: val.id,
-        id_user: val.id_user
+        id_detail: val.id_detail
       };
       return (
         <ExpansionPanel>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>
+            <Typography style={{ width: "100%" }}>
               <div className="dataCart">
                 <div>
                   <img
@@ -41,8 +44,10 @@ class Cart extends Component {
                     alt="ikan"
                   />
                 </div>
-                <div>
-                  <span>{val.nama}</span>
+                <div style={{ margin: "auto" }}>
+                  <span style={{ textAlign: "center", fontSize: "25px" }}>
+                    {val.nama}
+                  </span>
                 </div>
               </div>
             </Typography>
@@ -55,7 +60,7 @@ class Cart extends Component {
                   textAlign: "start"
                 }}
               >
-                <span>Rp. {val.harga}</span>
+                <span>Rp. {val.harga * val.quantity_product}</span>
               </div>
               <div
                 style={{
@@ -80,8 +85,15 @@ class Cart extends Component {
   render() {
     return (
       <div className="cartUser">
-        <h1>Cart</h1>
-        <div>{this.renderCart()}</div>
+        <h1 style={{ marginBottom: "30px" }}>Cart</h1>
+        <div style={{ marginBottom: "50px" }}>{this.renderCart()}</div>
+        <div>
+          {this.props.dataCart.length > 0 ? (
+            <Link to={"/checkout"}>
+              <button>Check Out</button>
+            </Link>
+          ) : null}
+        </div>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import {
-  AUTH_LOADING,
+  // AUTH_LOADING,
   AUTH_REGISTER,
   AUTH_REGISTER_ERROR,
   AUTH_SYSTEM_ERROR,
@@ -12,7 +12,7 @@ import { API } from "../../API/index";
 
 export const registerUser = ({ userName, password, email }) => {
   return dispatch => {
-    dispatch({ type: AUTH_LOADING });
+    // dispatch({ type: AUTH_LOADING });
     if (userName === "" || password === "" || email === "") {
       dispatch({ type: AUTH_REGISTER_ERROR, payload: "wajib di isi" });
     } else {
@@ -42,14 +42,15 @@ export const registerUser = ({ userName, password, email }) => {
   };
 };
 
-export const loginAction = ({ userName, password }) => {
+export const loginAction = ({ userName, password, role }) => {
   return dispatch => {
-    dispatch({ type: AUTH_LOADING });
+    // dispatch({ type: AUTH_LOADING });
 
     Axios.get(`${API}/LoginRegister/login`, {
       params: {
         userName,
-        password
+        password,
+        role
       }
     }).then(res => {
       console.log(res.data);
@@ -65,6 +66,8 @@ export const loginAction = ({ userName, password }) => {
 
 export const reLogin = res => {
   return dispatch => {
+    console.log(res, "result");
+
     dispatch({ type: USER_LOGIN_SUCCESS, payload: res });
   };
 };

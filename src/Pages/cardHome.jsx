@@ -15,8 +15,7 @@ class cardHome extends Component {
 
   // local state
   state = {
-    data: [],
-    readmoreselected: false
+    data: []
   };
 
   // function render data
@@ -36,32 +35,6 @@ class cardHome extends Component {
           />
           <div className="card-body">
             <h3 className="card-title">{val.nama}</h3>
-            {/* {this.state.readmoreselected === index ? (
-              <p className="card-text">
-                {val.deskripsiAwal}
-                <br />
-                <span
-                  style={{ color: "blue" }}
-                  onClick={() => this.setState({ readmoreselected: -1 })}
-                >
-                  Read Less
-                </span>
-              </p>
-            ) : (
-              <p className="card-text">
-                {val.deskripsiAwal
-                  .split("")
-                  .filter((val, index) => index <= 100)}
-                ...
-                <br />
-                <span
-                  style={{ color: "blue" }}
-                  onClick={() => this.setState({ readmoreselected: index })}
-                >
-                  Read More
-                </span>
-              </p>  
-            )} */}
             <Link to={`/ProductDetail/${val.id}`} className="btn btn-primary">
               Detail
             </Link>
@@ -78,13 +51,8 @@ class cardHome extends Component {
     return (
       <>
         <div>
-          <div className="container" style={{ textAlign: "center" }}>
-            <h1
-              className="container"
-              style={{ display: "flex", textAlign: "center" }}
-            >
-              Our product
-            </h1>
+          <div className="containerHome" style={{ textAlign: "center" }}>
+            <h1>Our product</h1>
           </div>
           <div className="cardHome">{this.renderData()}</div>
         </div>

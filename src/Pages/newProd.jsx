@@ -46,7 +46,7 @@ class NewProd extends Component {
                     >
                       {val.nama}
                     </h1>
-                    <p className="text-center">{val.deskripsiAwal}</p>
+                    <p className="text-center">{val.deskripsiFull}</p>
                     <Link
                       to={`/ProductDetail/${val.id}`}
                       className="btn btn-primary"
@@ -75,10 +75,11 @@ class NewProd extends Component {
                     >
                       {val.nama}
                     </h1>
-                    <p className="text-center">{val.deskripsiAwal}</p>
+                    <p className="text-center">{val.deskripsiFull}</p>
                     <Link
                       outline
                       color="primary"
+                      className="btn btn-outline-primary btn-sm"
                       to={`/ProductDetail/${val.id}`}
                     >
                       Detail

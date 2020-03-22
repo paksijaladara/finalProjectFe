@@ -17,7 +17,8 @@ const INITIAL_STATE = {
   token: "",
   loginerror: "",
   error: "",
-  loading: false,
+  role: "",
+  loading: true,
   statusregister: false,
   loginstatus: false
 };
@@ -25,7 +26,12 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case USER_LOGIN_SUCCESS:
-      return { ...INITIAL_STATE, ...action.payload, loginstatus: true };
+      return {
+        ...INITIAL_STATE,
+        ...action.payload,
+        loginstatus: true,
+        loading: false
+      };
     case USER_LOGOUT:
       return { ...INITIAL_STATE };
     case AUTH_LOADING:
